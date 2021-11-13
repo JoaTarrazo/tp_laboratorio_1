@@ -37,7 +37,7 @@ int parser_EmployeeFromText(FILE* pFile , LinkedList* pArrayListEmployee)
 					ll_add(pArrayListEmployee, pEmpleado);
 					//puts("estoy en el bucle");
 					estado = 0;
-					break; //DEJO EL BREAK XQ SE BUGEA Y NUNCA TERMINA EL BUCLE DOWHILE, EL FEOF NUNCA SE CUMPLE Y ANTES FUNCIONABA.
+					//break; //DEJO EL BREAK XQ SE BUGEA Y NUNCA TERMINA EL BUCLE DOWHILE, EL FEOF NUNCA SE CUMPLE Y ANTES FUNCIONABA.
 				}
 				else
 				{
