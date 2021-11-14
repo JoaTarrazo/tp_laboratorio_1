@@ -52,9 +52,10 @@ int controller_loadFromText(char* path , LinkedList* pArrayListEmployee)
  */
 int controller_loadFromBinary(char* path , LinkedList* pArrayListEmployee)
 {
-	{
 	    int estado = -1;
 
+	if(path!=NULL && pArrayListEmployee!=NULL)
+	{
 	    FILE* pFile = fopen(path,"rb");
 
 	    if(pFile!=NULL)
@@ -71,8 +72,8 @@ int controller_loadFromBinary(char* path , LinkedList* pArrayListEmployee)
 	    	fclose(pFile);
 	    }
 
-		return estado;
 	}
+		return estado;
 }
 
 /** \brief Alta de empleados
@@ -285,40 +286,26 @@ int controller_ListEmployee(LinkedList* pArrayListEmployee)
  *
  */
 
-//int controller_sortEmployee(LinkedList* pArrayListEmployee)
-// {
-
-int controller_sortEmployeeForName(void* pElemento1, void* pElemento2)
+int controller_sortEmployeeForName(LinkedList* pArrayListEmployee)
 {
-	   Employee* empleado1 = (Employee*) pElemento1;
+	int estado = -1;
+	int lenList;
+	int opcion;
 
-	   Employee* empleado2 = (Employee*) pElemento2;
+	lenList = ll_len(pArrayListEmployee);
 
-	   char auxNombre1[64];
+	if(pArrayListEmployee!=NULL &&  lenList>0)
+	{
+		if(utn_pedirInt(&opcion, 0, 1, 3, "Ingrese 0: si desea ordenar de forma ascendente o 1: forma descendente.\n", "Error al elegir la opcion")==0)
+		{
+			estado = ll_sort(pArrayListEmployee, employee_sortEmployeeForName,opcion);
 
-	   employee_getNombre(empleado1,auxNombre1);
-
-	   char auxNombre2[64];
-
-	   employee_getNombre(empleado2,auxNombre2);
-
-	   int retornoCompare = strcmp(auxNombre1,auxNombre2);
-
-	   if(retornoCompare>0)
-	   {
-	       return 1; //De mayor a menor.
-	   }
-	   else if(retornoCompare==0)
-	   {
-	       return 0; //si son iguales.
-	   }
-	   else
-	   {
-	       return -1; //de menor a mayor.
-	   }
+			printf("estado vale: %d", estado);
+		}
 	}
 
-// }
+	return estado;
+}
 
 /** \brief Guarda los datos de los empleados en el archivo data.csv (modo texto).
  *
@@ -331,7 +318,7 @@ int controller_sortEmployeeForName(void* pElemento1, void* pElemento2)
 int controller_saveAsText(char* path , LinkedList* pArrayListEmployee)
  {
 
-	Employee* pEmpleadoAux;
+	Employee* pEmpleadoAux = employee_new();
 	int idAux;
 	char nombreAux[NOMBRE_LEN];
 	int horasAux;

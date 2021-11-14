@@ -41,11 +41,12 @@ int parser_EmployeeFromText(FILE* pFile , LinkedList* pArrayListEmployee)
 				}
 				else
 				{
+					estado=-1;
 					break;
 				}
 			}
 
-		}while(feof(pFile)==0);
+		}while(!feof(pFile));
 
 		puts("sali del bucle");
 	}
@@ -83,6 +84,7 @@ int parser_EmployeeFromBinary(FILE* pFile , LinkedList* pArrayListEmployee)
 						}
 						else
 						{
+							estado=-1;
 							break;
 						}
 				}

@@ -140,29 +140,30 @@ int flagCase3=-1;
 
 				case 7:   //7. Ordenar empleados
 
-					if(flagCase1 == 0 || flagCase2==0 || flagCase3==0)
+					if(flagCase1 == 0 || flagCase2==0 || flagCase3==0)  // int lenList = ll_list(list)  if(lenList>0){}
 					{
-						ll_sort(list, controller_sortEmployeeForName, 0);
-
-						if(controller_ListEmployee(list)==0)
+						if(controller_sortEmployeeForName(list)!= -1)
 						{
-							puts("Lista ordenada por nombre completada!\n");
+							if(controller_ListEmployee(list)==0)
+							{
+								puts("Lista ordenada por nombre completada!\n");
+							}
 						}
-					}
-					else
-					{
-						puts("no hay Empleados o modificaciones para ordenar.");
+						else
+						{
+							puts("no hay Empleados o modificaciones para ordenar.");
+						}
 					}
 
 					break;
 
-				/*case 8:   //8. Guardar los datos de los empleados en el archivo data.csv (modo texto)
+				case 8:   //8. Guardar los datos de los empleados en el archivo data.csv (modo texto)
 
 					if(flagCase1 == 0 || flagCase2==0 || flagCase3==0)
 					{
-						if(controller_saveAsText("data.csv", list)==0)
+						if(controller_saveAsText("data.txt", list)==0)
 						{
-							puts("Empleados guardados en el archivo de forma BINARIA correctamente");
+							puts("Empleados guardados en el archivo de forma de TEXTO correctamente");
 						}
 						else
 						{
@@ -196,7 +197,7 @@ int flagCase3=-1;
 
 					break;
 
-				*/case 10:  // bye bye!
+				case 10:  // bye bye!
 
 					puts("bye byee!\n");
 					break;

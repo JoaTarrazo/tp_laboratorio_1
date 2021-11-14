@@ -29,7 +29,7 @@ int controller_removeEmployee(LinkedList* pArrayListEmployee);
 int controller_ListEmployee(LinkedList* pArrayListEmployee);
 
 
-int controller_sortEmployeeForName(void* pElemento1, void* pElemento2);
+int controller_sortEmployeeForName(LinkedList* list);
 
 
 int controller_saveAsText(char* path , LinkedList* pArrayListEmployee);

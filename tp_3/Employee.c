@@ -148,6 +148,32 @@ int employee_imprimirEmpleado(Employee* this)
 	return estado;
 }
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+int employee_sortEmployeeForName(void* pElemento1, void* pElemento2)
+{
+	int valor;
+
+	   Employee* empleado1 = (Employee*) pElemento1;
+
+	   Employee* empleado2 = (Employee*) pElemento2;
+
+	   char auxNombre1[64];
+	   char auxNombre2[64];
+
+	   puts("entre en la funcion");
+
+	   if(employee_getNombre(empleado1,auxNombre1)!=-1)
+	   {	puts("entre al primer get");
+		  if(employee_getNombre(empleado2,auxNombre2)!=-1)
+		   {	puts("entre al segundo get"); //NO ENTRA AL SEGUNDO PUTS.
+			   valor = strcmp(auxNombre1,auxNombre2);
+			   printf("entre al if");
+		   }
+	   }
+
+	return valor;
+}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //SETTERS:
